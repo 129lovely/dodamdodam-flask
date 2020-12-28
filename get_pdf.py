@@ -26,7 +26,7 @@ mecab = Mecab()
 
 class PDF(FPDF):
     def read_json(self,roomid):
-        with open("meeting/"+roomid+'/json_file.json', 'r') as f:
+        with open("meeting/"+roomid+'/json_file_mod.json', 'r') as f:
             self.data = json.load(f)
     #             print(json.dumps(self.data,indent="\t") )
     #         self.dataframe = pd.DataFrame(json_data)
@@ -624,7 +624,8 @@ def Chart2(texts, keyword_list, roomid ):
     font_path = "./font/NanumGothic.ttf"
     fontprop = fm.FontProperties(fname=font_path, size=18)
     font_name = fm.FontProperties(fname=font_path, size=18).get_name()
-    plt.rc('font', family = font_name)
+    # plt.rc('font', family = font_name)
+    plt.rc('font', family = font_path)
     plt.rcParams['figure.figsize'] = [15, 8]
     plt.plot(df.index, df[keyword_list[0]], marker='o', color='r', )
     plt.plot(df.index, df[keyword_list[1]], marker='*', color='b')
@@ -905,7 +906,7 @@ def main(roomid):
     }
 
     # json 저장
-    josn_path="meeting/" + roomid + "/json_file.json"
+    josn_path="meeting/" + roomid + "/json_file_mod.json"
     with open(josn_path, "w") as json_file:
         json.dump(sample, json_file)
 

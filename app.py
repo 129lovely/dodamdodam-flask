@@ -15,6 +15,7 @@ def ping():
 
 @app.route("/api/report/<roomid>", methods=['POST', 'GET'])
 def report(roomid):
+	
 	os.makedirs('./meeting/' + roomid, exist_ok=True)
 
 	# json 파일 생성
@@ -25,7 +26,10 @@ def report(roomid):
 
 	# 만든 json 파일 이용해서 파일 가져오기
 	if request.method == 'GET':
+		roomid = "0e43pjtt"
 		filename = roomid + ".pdf"
+
+		print(roomid)
 
 		get_pdf.main(roomid) # 1차 끝점검출
 
