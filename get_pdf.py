@@ -622,18 +622,18 @@ def Chart2(texts, keyword_list, roomid ):
     df.index = ['초반', '초중반', '중반', '중후반', '후반']
 
     font_path = "./font/NanumGothic.ttf"
-    fontprop = fm.FontProperties(fname=font_path, size=18)
-    font_name = fm.FontProperties(fname=font_path, size=18).get_name()
+    fontprop = fm.FontProperties(fname=font_path)
+    # font_name = fm.FontProperties(fname=font_path, size=18).get_name()
     # plt.rc('font', family = font_name)
     plt.rc('font', family = font_path)
     plt.rcParams['figure.figsize'] = [15, 8]
     plt.plot(df.index, df[keyword_list[0]], marker='o', color='r', )
     plt.plot(df.index, df[keyword_list[1]], marker='*', color='b')
     plt.plot(df.index, df[keyword_list[2]], marker='+', color='y')
-    plt.xticks(size = 20)
+    plt.xticks(fontproperties=fontprop, size=20)
     plt.yticks(size = 20)
-    plt.title('시간대별 키워드', fontsize=30) 
-    plt.legend(keyword_list, fontsize=18, loc='best')
+    plt.title('시간대별 키워드', fontsize=30, fontproperties=fontprop) 
+    plt.legend(keyword_list, fontsize=18, loc='best', fontproperties=fontprop)
     plt.savefig(file_name)
     plt.show()
     plt.close()
