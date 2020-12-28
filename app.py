@@ -27,6 +27,8 @@ def report(roomid):
 	if request.method == 'GET':
 		filename = roomid + ".pdf"
 
+		get_pdf.main(roomid) # 1차 끝점검출
+
 		pdf = get_pdf.PDF(orientation='P', unit='mm', format='A4')
 		pdf.read_json(roomid) # todo: json 파일명
 		pdf.main_page_static()
