@@ -26,7 +26,6 @@ def report(roomid):
 
 	# 만든 json 파일 이용해서 파일 가져오기
 	if request.method == 'GET':
-		roomid = "0e43pjtt"
 		filename = roomid + ".pdf"
 
 		print(roomid)
