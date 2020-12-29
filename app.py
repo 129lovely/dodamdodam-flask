@@ -1,12 +1,14 @@
 from flask import Flask
 from flask import request
 from flask import make_response, send_file
-import get_pdf
+from .get_pdf import PDF, main
 import json
 import os
-
+import sys
 
 app = Flask(__name__) # Flask 클래스 객체화(Flast 웹 애플리케이션)
+
+sys.path.append("/home/ubuntu/api")
 
 @app.route("/ping", methods=['GET']) # 엔드포인트 등록
 def ping():
@@ -30,9 +32,9 @@ def report(roomid):
 
 		print(roomid)
 
-		get_pdf.main(roomid) # 1차 끝점검출
+		main(roomid) # 1차 끝점검출
 
-		pdf = get_pdf.PDF(orientation='P', unit='mm', format='A4')
+		pdf = PDF(orientation='P', unit='mm', format='A4')
 		pdf.read_json(roomid) # todo: json 파일명
 		pdf.main_page_static()
 		pdf.main_page_dynamic()
