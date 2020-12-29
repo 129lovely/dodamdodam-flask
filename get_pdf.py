@@ -623,7 +623,7 @@ def Chart2(texts, keyword_list, roomid ):
 
     font_path = "./font/NanumGothic.ttf"
     fontprop = fm.FontProperties(fname=font_path)
-    # font_name = fm.FontProperties(fname=font_path, size=18).get_name()
+    font_name = fm.FontProperties(fname=font_path).get_name()
     # plt.rc('font', family = font_name)
     plt.rc('font', family = font_path)
     plt.rcParams['figure.figsize'] = [15, 8]
@@ -633,7 +633,7 @@ def Chart2(texts, keyword_list, roomid ):
     plt.xticks(fontproperties=fontprop, size=20)
     plt.yticks(size = 20)
     plt.title('시간대별 키워드', fontsize=30, fontproperties=fontprop) 
-    plt.legend(keyword_list, fontsize=18, loc='best', fontproperties=fontprop)
+    plt.legend(keyword_list, prop={'family': font_name, 'size': 18}, loc='best')
     plt.savefig(file_name)
     plt.show()
     plt.close()
